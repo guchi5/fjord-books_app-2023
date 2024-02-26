@@ -202,6 +202,15 @@ ja:
       truncate: '…'
     devise:
       sign_out: 'サインアウト'
+      sign_up: 'サインアップ'
+      forget_pw: 'パスワードをお忘れですか？'
+      log_in: 'ログイン'
+      e-mail: 'E-mail'
+      password: 'パスワード'
+      min_pw_size: '文字以上'
+      pw_confirmation: 'パスワード確認'
+      remember_me: 'ログイン状態を保持する'
+      send_e-mail: '送信'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
