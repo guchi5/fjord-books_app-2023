@@ -211,6 +211,9 @@ ja:
       pw_confirmation: 'パスワード確認'
       remember_me: 'ログイン状態を保持する'
       send_e-mail: '送信'
+      change_pw: 'パスワードを変更'
+      new_pw: '新しいパスワード'
+      change: '変更'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
