@@ -18,4 +18,5 @@
 <nav class="page-nav">
     <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
     <%= link_to t('views.devise.sign_out'), destroy_account_session_path, data: { turbo_method: :delete } %>
+    <%= link_to t('views.devise.edit_account'), edit_account_registration_path %>
 </nav>

@@ -214,6 +214,7 @@ ja:
       change_pw: 'パスワードを変更'
       new_pw: '新しいパスワード'
       change: '変更'
+      edit_account: 'アカウント情報編集'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
