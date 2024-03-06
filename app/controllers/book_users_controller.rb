@@ -1,7 +1,15 @@
-class BookUsersController < ApplicationController
-  def index; end
+# frozen_string_literal: true
 
-  def show; end
+class BookUsersController < ApplicationController
+  before_action :authenticate_account!
+
+  def index
+    @book_users = BookUser.page(params[:page]).order('created_at desc')
+  end
+
+  def show
+    @book_user = BookUser.where('account_id == ?', params[:account_id])[0]
+  end
 
   def edit
     users = BookUser.where 'account_id == ?', current_account.id
@@ -16,7 +24,6 @@ class BookUsersController < ApplicationController
   end
 
   def update
-    Rails.logger.debug "テスト#{params[:account_id]}"
     obj = BookUser.where('account_id == ?', current_account.id)[0]
     obj.update(book_user_params)
     redirect_to '/books'

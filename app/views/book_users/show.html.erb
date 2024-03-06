@@ -1,2 +1,21 @@
-<h1>BookUsers#show</h1>
-<p>Find me in app/views/book_users/show.html.erb</p>
+<h1><%= @book_user.name %></h1>
+<table>
+    <tr>
+        <th>名前</th>
+        <td><%= @book_user.name %></td>
+    </tr>
+    <tr>
+        <th>郵便番号</th>
+        <td><%= @book_user.postal_code %></td>
+    </tr>
+    <tr>
+        <th>住所</th>
+        <td><%= @book_user.address %></td>
+    </tr>
+    <tr>
+        <th>自己紹介</th>
+        <td><%= @book_user.self_introduction %></td>
+    </tr>
+</table>
+<hr>
+<%= link_to '戻る', '/book_users' %>
