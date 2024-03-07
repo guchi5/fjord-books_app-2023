@@ -1,10 +1,10 @@
-<h2><%= t('views.devise.edit_account') %></h2>
+<h2><%= t('views.common.title_edit', name:i18n_pluralize(Account.model_name.human)) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email, t('views.devise.e-mail') %><br />
+    <%= f.label :email, Account.human_attribute_name(:email) %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -13,31 +13,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password, t('views.devise.password') %> <i>(<%= t('views.devise.leave_blank') %>)</i><br />
+    <%= f.label :password, Account.human_attribute_name(:password) %> <i>(<%= t('views.devise.leave_blank') %>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= "#{@minimum_password_length}#{t('views.devise.min_pw_size')}" %></em>
+      <em><%= Account.human_attribute_name(:password) %><%= t('errors.messages.too_short', count: @minimum_password_length) %></em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, t('views.devise.pw_confirmation') %><br />
+    <%= f.label :password_confirmation, Account.human_attribute_name(:password_confirmation) %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password, t('views.devise.current_pw') %><br />
+    <%= f.label :current_password, Account.human_attribute_name(:current_password) %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('views.devise.update') %>
+    <%= f.submit %>
   </div>
 <% end %>
 
-<h3><%= t('views.devise.cancel_account') %></h3>
+<h3><%= t('views.common.destroy', name: i18n_pluralize(Account.model_name.human) ) %></h3>
 
-<div><%= button_to t('views.devise.cancel_account'), registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div><%= button_to t('views.common.destroy', name: i18n_pluralize(Account.model_name.human)), registration_path(resource_name), data: { confirm: t('views.common.delete_confirm'), turbo_confirm: t('views.common.delete_confirm') }, method: :delete %></div>
 
-<%= link_to t('views.devise.back'), '/books' %>
+<%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>

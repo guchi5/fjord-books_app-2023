@@ -1,4 +1,4 @@
-<h1>ユーザ一覧</h1>
+<h1><%= t('views.common.title_index', name: i18n_pluralize(BookUser.model_name.human)) %></h1>
 <% @book_users.each do |book_user| %>
 <div><a href="/book_users/<%= book_user.account_id %>"><%= book_user.name %></a>
 </div>
@@ -6,4 +6,4 @@
 <br>
 <div><%= paginate @book_users %></div>
 <hr>
-<%= link_to '戻る', '/books' %>
+<%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>

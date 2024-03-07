@@ -1,22 +1,22 @@
-<h1>プロフィールの編集</h1>
+<h1><%= t('views.common.title_edit', name:BookUser.human_attribute_name(:profile)) %></h1>
 <%= form_for(@book_user, url:{controller:'book_users', action:'update'}) do |f| %>
 <div>
-    <label for="name">ユーザーネーム</label>
+    <label for="name"><%= BookUser.human_attribute_name(:name) %></label>
     <%= f.text_field :name %>
 </div>
 <div>
-    <label for="postal_code">郵便番号</label>
+    <label for="postal_code"><%= BookUser.human_attribute_name(:postal_code) %></label>
     <%= f.text_field :postal_code %>
 </div>
 <div>
-    <label for="address">住所</label>
+    <label for="address"><%= BookUser.human_attribute_name(:address) %></label>
     <%= f.text_field :address %>
 </div>
 <div>
-    <label for="self_introduction">自己紹介</label>
+    <label for="self_introduction"><%= BookUser.human_attribute_name(:self_introduction) %></label>
     <%= f.text_area :self_introduction %>
 </div>
-<%= f.submit "更新" %>
+<%= f.submit %>
 <% end %>
 <hr>
-<%= link_to '戻る', '/books' %>
+<%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>

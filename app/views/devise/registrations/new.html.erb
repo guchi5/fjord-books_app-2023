@@ -4,20 +4,20 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email, t('views.devise.e-mail') %><br />
+    <%= f.label :email, Account.human_attribute_name(:email) %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password, t('views.devise.password') %>
+    <%= f.label :password, Account.human_attribute_name(:password) %>
     <% if @minimum_password_length %>
-    <em>(<%= "#{@minimum_password_length}#{t('views.devise.min_pw_size')}" %>)</em>
+    <em><%= Account.human_attribute_name(:password) %><%= t('errors.messages.too_short', count: @minimum_password_length) %></em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, t('views.devise.pw_confirmation') %><br />
+    <%= f.label :password_confirmation, Account.human_attribute_name(:password_confirmation) %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 

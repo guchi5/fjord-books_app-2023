@@ -18,7 +18,7 @@
 <nav class="page-nav">
     <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
     <%= link_to t('views.devise.sign_out'), destroy_account_session_path, data: { turbo_method: :delete } %>
-    <%= link_to t('views.devise.edit_account'), edit_account_registration_path %>
-    <%= link_to 'プロフィールの編集', 'profile/edit' %>
-    <%= link_to 'ユーザ一覧', 'book_users' %>
+    <%= link_to t('views.common.title_edit', name:i18n_pluralize(Account.model_name.human)), edit_account_registration_path %>
+    <%= link_to t('views.common.title_edit', name:BookUser.human_attribute_name(:profile)), 'profile/edit' %>
+    <%= link_to t('views.common.title_index', name: i18n_pluralize(BookUser.model_name.human)), 'book_users' %>
 </nav>
