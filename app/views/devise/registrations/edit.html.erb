@@ -1,0 +1,43 @@
+<h2><%= t('views.common.title_edit', name:i18n_pluralize(Account.model_name.human)) %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, Account.human_attribute_name(:email) %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, Account.human_attribute_name(:password) %> <i>(<%= t('views.devise.leave_blank') %>)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= Account.human_attribute_name(:password) %><%= t('errors.messages.too_short', count: @minimum_password_length) %></em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, Account.human_attribute_name(:password_confirmation) %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, Account.human_attribute_name(:current_password) %><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h3><%= t('views.common.destroy', name: i18n_pluralize(Account.model_name.human) ) %></h3>
+
+<div><%= button_to t('views.common.destroy', name: i18n_pluralize(Account.model_name.human)), registration_path(resource_name), data: { confirm: t('views.common.delete_confirm'), turbo_confirm: t('views.common.delete_confirm') }, method: :delete %></div>
+
+<%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>

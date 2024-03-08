@@ -200,6 +200,14 @@ ja:
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+    devise:
+      sign_out: 'サインアウト'
+      sign_up: 'サインアップ'
+      forget_pw: 'パスワードをお忘れですか？'
+      log_in: 'ログイン'
+      send_e-mail: '送信'
+      change_pw: 'パスワードを変更'
+      leave_blank: '変更しない場合は空白のままにしてください'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"

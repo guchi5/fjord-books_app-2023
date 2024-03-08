@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       book: 本
+      book_user: ユーザー
+      account: アカウント
 
     attributes:
       book:
@@ -9,3 +11,17 @@ ja:
         memo: メモ
         picture: 画像
         title: タイトル
+      book_user:
+        name: ユーザーネーム
+        postal_code: 郵便番号
+        address: 住所
+        self_introduction: 自己紹介
+        profile: プロフィール
+      account:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
+        new_password: '新しいパスワード'
+
+        remember_me: 次回から自動的にログイン

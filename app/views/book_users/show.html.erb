@@ -1,0 +1,21 @@
+<h1><%= @book_user.name %></h1>
+<table>
+    <tr>
+        <th><%= BookUser.human_attribute_name(:name) %></th>
+        <td><%= @book_user.name %></td>
+    </tr>
+    <tr>
+        <th><%= BookUser.human_attribute_name(:postal_code) %></th>
+        <td><%= @book_user.postal_code %></td>
+    </tr>
+    <tr>
+        <th><%= BookUser.human_attribute_name(:address) %></th>
+        <td><%= @book_user.address %></td>
+    </tr>
+    <tr>
+        <th><%= BookUser.human_attribute_name(:self_introduction) %></th>
+        <td><%= @book_user.self_introduction %></td>
+    </tr>
+</table>
+<hr>
+<%= link_to t('views.common.back', name: i18n_pluralize(BookUser.model_name.human.downcase)), book_users_path %>
