@@ -12,13 +12,11 @@
   <% end %>
 
   <div>
-    <%= form.label :book_id, style: "display: block" %>
-    <%= form.number_field :book_id %>
+    <%= form.hidden_field :book_id, value: book.id %>
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div>

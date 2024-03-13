@@ -1,17 +1,11 @@
 <div id="<%= dom_id book_comment %>">
-  <p>
-    <strong>Book:</strong>
-    <%= book_comment.book_id %>
-  </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= book_comment.user_id %>
-  </p>
+  <header class="comment_header">
+    <div class="comment_title"><%= link_to book_comment.user.name, book_comment.user %></div>
+    <time><%= book_comment.created_at %></time>
+  </header>
 
-  <p>
-    <strong>Content:</strong>
-    <%= book_comment.content %>
-  </p>
-
+  <div class="comment_description">
+    <p><%= book_comment.content %></p>
+  </div>
 </div>

@@ -1,6 +1,6 @@
-<h1>New book comment</h1>
+<h1><%= @book.title %> comment</h1>
 
-<%= render "form", book_comment: @book_comment %>
+<%= render "form", book_comment: @book_comment, book: @book %>
 
 <br>
 
