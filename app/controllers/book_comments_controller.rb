@@ -5,7 +5,7 @@ class BookCommentsController < ApplicationController
 
   # GET /book_comments or /book_comments.json
   def index
-    @book_comments = BookComment.all
+    redirect_to books_path
   end
 
   # GET /book_comments/1 or /book_comments/1.json
