@@ -4,7 +4,16 @@
 
 <div id="reports">
   <% @reports.each do |report| %>
-    <%= render report %>
+  <header class="reports_header">
+    <div class="report_title"><%= link_to report.title, report %></div>
+  </header>
+
+  <div>
+    <%= link_to report.user.name, report.user %>
+  </div>
+  <div>
+    <time><%= report.created_at %></time>
+  </div>
     <p>
       <%= link_to "Show this report", report %>
     </p>
