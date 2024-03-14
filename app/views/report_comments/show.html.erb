@@ -4,10 +4,10 @@
 
 <div>
   <% if current_user == @report_comment.user %>
-    <%= link_to "Edit this report comment", edit_report_comment_path(@report_comment) %> |
+    <%= link_to t('views.common.edit', name: i18n_pluralize(ReportComment.model_name.human.downcase)), edit_report_comment_path(@report_comment, report_id:@report_comment.report.id) %> |
   <% end %>
-  <%= link_to "Back", report_path(@report_comment.report) %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(ReportComment.model_name.human.downcase)), report_path(@report_comment.report) %>
   <% if current_user == @report_comment.user %>
-    <%= button_to "Destroy this report comment", @report_comment, method: :delete %>
+    <%= button_to t('views.common.destroy', name: ReportComment.model_name.human.downcase), @report_comment, method: :delete %>
   <% end %>
 </div>

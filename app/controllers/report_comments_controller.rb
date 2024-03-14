@@ -16,7 +16,9 @@ class ReportCommentsController < ApplicationController
   end
 
   # GET /report_comments/1/edit
-  def edit; end
+  def edit
+    @report = Report.find(params[:report_id].to_i)
+  end
 
   # POST /report_comments or /report_comments.json
   def create
