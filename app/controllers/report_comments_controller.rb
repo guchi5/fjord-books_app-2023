@@ -26,7 +26,7 @@ class ReportCommentsController < ApplicationController
 
     respond_to do |format|
       if @report_comment.save
-        format.html { redirect_to report_comment_url(@report_comment), notice: 'Report comment was successfully created.' }
+        format.html { redirect_to report_comment_url(@report_comment), notice: t('controllers.common.notice_create', name: ReportComment.model_name.human) }
         format.json { render :show, status: :created, location: @report_comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class ReportCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @report_comment.update(report_comment_params)
-        format.html { redirect_to report_comment_url(@report_comment), notice: 'Report comment was successfully updated.' }
+        format.html { redirect_to report_comment_url(@report_comment), notice: t('controllers.common.notice_update', name: ReportComment.model_name.human) }
         format.json { render :show, status: :ok, location: @report_comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class ReportCommentsController < ApplicationController
     @report_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to report_comments_url, notice: 'Report comment was successfully destroyed.' }
+      format.html { redirect_to report_comments_url, notice: t('controllers.common.notice_destroy', name: ReportComment.model_name.human) }
       format.json { head :no_content }
     end
   end

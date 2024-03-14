@@ -319,3 +319,38 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: var(--global-primary-c-hover);
 }
+
+time {
+  color: #9f9fa8;
+}
+
+.report-list {
+  border: solid;
+}
+
+.report-list-item {
+  border-bottom: 1px solid;
+  padding: 12px 16px;
+}
+
+.report-list-item h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.user_name {
+  padding-right: 10px;
+}
+
+.user_name > a {
+  color: #9f9fa8 !important;
+  text-decoration: none;
+}
+.user_name > a:hover{
+  text-decoration: underline;
+}
+
+.report_meta {
+  display: flex;
+  font-size: 12px;
+}

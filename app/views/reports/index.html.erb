@@ -2,18 +2,23 @@
 
 <h1><%= t('views.common.title_index', name: i18n_pluralize(Report.model_name.human)) %></h1>
 
-<div id="reports">
+<div id="reports" class="report-list">
   <% @reports.each do |report| %>
-  <header class="reports_header">
-    <div class="report_title"><%= link_to report.title, report %></div>
-  </header>
-
-  <div>
-    <%= link_to report.user.name, report.user %>
-  </div>
-  <div>
-    <time><%= report.created_at.strftime(t('time.formats.long')) %></time>
-  </div>
+      <div class="report-list-item">
+        <div class="report-list-item_inner">
+          <div class="reports_header">
+            <div class="report_title"><h2><%= link_to report.title, report %></h2></div>
+          </div>
+          <div class="report_meta">
+            <div class="user_name">
+              <%= link_to report.user.name, report.user %>
+            </div>
+            <div>
+              <time><%= report.created_at.strftime(t('time.formats.long')) %></time>
+            </div>
+          </div>
+                </div>
+        </div>
   <% end %>
 </div>
 

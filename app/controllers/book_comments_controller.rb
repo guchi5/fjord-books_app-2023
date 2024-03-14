@@ -26,7 +26,7 @@ class BookCommentsController < ApplicationController
 
     respond_to do |format|
       if @book_comment.save
-        format.html { redirect_to book_comment_url(@book_comment), notice: 'Book comment was successfully created.' }
+        format.html { redirect_to book_comment_url(@book_comment), notice: t('controllers.common.notice_create', name: BookComment.model_name.human) }
         format.json { render :show, status: :created, location: @book_comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class BookCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @book_comment.update(book_comment_params)
-        format.html { redirect_to book_comment_url(@book_comment), notice: 'Book comment was successfully updated.' }
+        format.html { redirect_to book_comment_url(@book_comment), notice: t('controllers.common.notice_update', name: BookComment.model_name.human) }
         format.json { render :show, status: :ok, location: @book_comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class BookCommentsController < ApplicationController
     @book_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to book_comments_url, notice: 'Book comment was successfully destroyed.' }
+      format.html { redirect_to book_comments_url, notice: t('controllers.common.notice_destroy', name: BookComment.model_name.human) }
       format.json { head :no_content }
     end
   end
