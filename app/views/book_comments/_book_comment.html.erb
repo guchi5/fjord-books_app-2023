@@ -2,7 +2,7 @@
 
   <header class="comment_header">
     <div class="comment_title"><%= link_to book_comment.user.name, book_comment.user %></div>
-    <time><%= book_comment.created_at %></time>
+    <time><%= book_comment.created_at.strftime(t('time.formats.long')) %></time>
   </header>
 
   <div class="comment_description">
