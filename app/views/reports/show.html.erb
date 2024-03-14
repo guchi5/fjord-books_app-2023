@@ -11,3 +11,14 @@
     <%= button_to "Destroy this report", @report, method: :delete %>
   <% end %>
 </div>
+
+<%= link_to "New report comment", new_report_comment_path(report_id:@report.id) %>
+
+<div id="report_comments">
+  <% @report.report_comment.each do |report_comment| %>
+    <%= render report_comment %>
+    <p>
+      <%= link_to "Show this report comment", report_comment %>
+    </p>
+  <% end %>
+</div>

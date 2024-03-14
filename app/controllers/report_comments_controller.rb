@@ -1,23 +1,22 @@
 class ReportCommentsController < ApplicationController
-  before_action :set_report_comment, only: %i[ show edit update destroy ]
+  before_action :set_report_comment, only: %i[show edit update destroy]
 
   # GET /report_comments or /report_comments.json
   def index
-    @report_comments = ReportComment.all
+    redirect_to books_path
   end
 
   # GET /report_comments/1 or /report_comments/1.json
-  def show
-  end
+  def show; end
 
   # GET /report_comments/new
   def new
     @report_comment = ReportComment.new
+    @report = Report.find(params[:report_id].to_i)
   end
 
   # GET /report_comments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /report_comments or /report_comments.json
   def create
@@ -25,7 +24,7 @@ class ReportCommentsController < ApplicationController
 
     respond_to do |format|
       if @report_comment.save
-        format.html { redirect_to report_comment_url(@report_comment), notice: "Report comment was successfully created." }
+        format.html { redirect_to report_comment_url(@report_comment), notice: 'Report comment was successfully created.' }
         format.json { render :show, status: :created, location: @report_comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +37,7 @@ class ReportCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @report_comment.update(report_comment_params)
-        format.html { redirect_to report_comment_url(@report_comment), notice: "Report comment was successfully updated." }
+        format.html { redirect_to report_comment_url(@report_comment), notice: 'Report comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @report_comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +51,20 @@ class ReportCommentsController < ApplicationController
     @report_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to report_comments_url, notice: "Report comment was successfully destroyed." }
+      format.html { redirect_to report_comments_url, notice: 'Report comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report_comment
-      @report_comment = ReportComment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def report_comment_params
-      params.require(:report_comment).permit(:report_id, :user_id, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report_comment
+    @report_comment = ReportComment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def report_comment_params
+    params.require(:report_comment).permit(:report_id, :user_id, :content)
+  end
 end

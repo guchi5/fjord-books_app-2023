@@ -3,8 +3,11 @@
 <%= render @report_comment %>
 
 <div>
-  <%= link_to "Edit this report comment", edit_report_comment_path(@report_comment) %> |
-  <%= link_to "Back to report comments", report_comments_path %>
-
-  <%= button_to "Destroy this report comment", @report_comment, method: :delete %>
+  <% if current_user == @report_comment.user %>
+    <%= link_to "Edit this report comment", edit_report_comment_path(@report_comment) %> |
+  <% end %>
+  <%= link_to "Back", report_path(@report_comment.report) %>
+  <% if current_user == @report_comment.user %>
+    <%= button_to "Destroy this report comment", @report_comment, method: :delete %>
+  <% end %>
 </div>
