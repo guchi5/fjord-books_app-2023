@@ -1,9 +1,9 @@
-<h1><%= @book.title %> comment</h1>
+<h1><%= t('views.common.title_new', name: BookComment.model_name.human.downcase) %></h1>
 
 <%= render "form", book_comment: @book_comment, book: @book %>
 
 <br>
 
 <div>
-  <%= link_to "Back to book comments", book_comments_path %>
+  <%= link_to t('views.common.back', name: BookComment.model_name.human.downcase), book_path(@book) %>
 </div>
