@@ -1,0 +1,26 @@
+<h1><%= t('views.common.title_index', name: i18n_pluralize(Report.model_name.human)) %></h1>
+
+<div id="reports" class="report-list">
+  <% @reports.each do |report| %>
+      <div class="report-list-item">
+        <div class="report-list-item_inner">
+          <div class="report_header">
+            <div class="report_title"><h2><%= link_to report.title, report %></h2></div>
+          </div>
+          <div class="report_meta">
+            <div class="user_name">
+              <% if report.user.name.empty? %>
+                <%= link_to report.user.email, report.user %>
+              <% end %>
+              <%= link_to report.user.name, report.user %>
+            </div>
+            <div>
+              <time><%= report.created_at.strftime(t('time.formats.long')) %></time>
+            </div>
+          </div>
+                </div>
+        </div>
+  <% end %>
+</div>
+
+<%= link_to t('views.common.new', name: Report.model_name.human.downcase), new_report_path %>

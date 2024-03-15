@@ -3,6 +3,9 @@ ja:
     models:
       book: 本
       user: ユーザ
+      book_comment: コメント
+      report: 日報
+      report_comment: コメント
 
     attributes:
       book:
@@ -16,3 +19,10 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      book_comment:
+        content: 内容
+      report:
+        title: タイトル
+        content: 内容
+      report_comment:
+        content: 内容
