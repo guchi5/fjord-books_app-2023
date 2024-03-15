@@ -1,12 +1,17 @@
-<div id="<%= dom_id report_comment %>">
-  <p>
-    <strong><%= User.human_attribute_name(:name) %>:</strong>
-    <%= report_comment.user.name %>
-  </p>
-
-  <p>
-    <strong><%= ReportComment.human_attribute_name(:content) %></strong>
-    <%= report_comment.content %>
-  </p>
-
+<div id="<%= dom_id report_comment %>" class="comment-box">
+  <div class="comment-box-header">  
+    <h2>
+      <%= link_to report_comment.user.name, report_comment.user %>
+    </h2>
+    <time><%= report_comment.created_at.strftime(t('time.formats.long')) %></time>
+  </div>
+  <div class="comment-box-main">
+      <p><%= safe_join(report_comment.content.split("\n"),tag(:br)) %></p>
+  </div>
+  <% if current_user == report_comment.user %>
+    <div class="comment-box-footer">
+        <%= link_to t('views.common.edit', name: i18n_pluralize(ReportComment.model_name.human.downcase)), edit_report_comment_path(report_comment, report_id:report_comment.report.id) %>
+        <%= button_to t('views.common.destroy', name: ReportComment.model_name.human.downcase), report_comment, method: :delete %>
+    </div>
+  <% end %>
 </div>

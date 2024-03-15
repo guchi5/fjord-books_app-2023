@@ -9,7 +9,9 @@ class BookCommentsController < ApplicationController
   end
 
   # GET /book_comments/1 or /book_comments/1.json
-  def show; end
+  def show
+    redirect_to books_path
+  end
 
   # GET /book_comments/new
   def new
@@ -18,7 +20,9 @@ class BookCommentsController < ApplicationController
   end
 
   # GET /book_comments/1/edit
-  def edit; end
+  def edit
+    redirect_to books_path if current_user != BookComment.find(params[:id]).user
+  end
 
   # POST /book_comments or /book_comments.json
   def create
@@ -26,7 +30,7 @@ class BookCommentsController < ApplicationController
 
     respond_to do |format|
       if @book_comment.save
-        format.html { redirect_to book_comment_url(@book_comment), notice: t('controllers.common.notice_create', name: BookComment.model_name.human) }
+        format.html { redirect_to @book_comment.book, notice: t('controllers.common.notice_create', name: BookComment.model_name.human) }
         format.json { render :show, status: :created, location: @book_comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +43,7 @@ class BookCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @book_comment.update(book_comment_params)
-        format.html { redirect_to book_comment_url(@book_comment), notice: t('controllers.common.notice_update', name: BookComment.model_name.human) }
+        format.html { redirect_to @book_comment.book, notice: t('controllers.common.notice_update', name: BookComment.model_name.human) }
         format.json { render :show, status: :ok, location: @book_comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,10 +54,12 @@ class BookCommentsController < ApplicationController
 
   # DELETE /book_comments/1 or /book_comments/1.json
   def destroy
+    comment = BookComment.find(params[:id])
+    book = comment.book
     @book_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to book_comments_url, notice: t('controllers.common.notice_destroy', name: BookComment.model_name.human) }
+      format.html { redirect_to book, notice: t('controllers.common.notice_destroy', name: BookComment.model_name.human) }
       format.json { head :no_content }
     end
   end

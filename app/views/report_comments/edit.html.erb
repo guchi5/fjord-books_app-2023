@@ -5,6 +5,5 @@
 <br>
 
 <div>
-  <%= link_to t('views.common.show', name: i18n_pluralize(ReportComment.model_name.human.downcase)), @report_comment %> |
-  <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(ReportComment.model_name.human.downcase)), @report_comment.report %>
 </div>

@@ -15,8 +15,5 @@
 <div id="report_comments">
   <% @report.report_comment.each do |report_comment| %>
     <%= render report_comment %>
-    <p>
-      <%= link_to t('views.common.show', name: ReportComment.model_name.human.downcase), report_comment %>
-    </p>
   <% end %>
 </div>

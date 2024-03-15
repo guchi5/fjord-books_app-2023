@@ -5,6 +5,5 @@
 <br>
 
 <div>
-  <%= link_to "Show this book comment", @book_comment %> |
-  <%= link_to "Back to book comments", book_comments_path %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(BookComment.model_name.human.downcase)), @book_comment.book %>
 </div>

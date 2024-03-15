@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportCommentsController < ApplicationController
   before_action :set_report_comment, only: %i[show edit update destroy]
 
@@ -7,7 +9,9 @@ class ReportCommentsController < ApplicationController
   end
 
   # GET /report_comments/1 or /report_comments/1.json
-  def show; end
+  def show
+    redirect_to books_path
+  end
 
   # GET /report_comments/new
   def new
@@ -18,6 +22,7 @@ class ReportCommentsController < ApplicationController
   # GET /report_comments/1/edit
   def edit
     @report = Report.find(params[:report_id].to_i)
+    redirect_to @report if current_user != ReportComment.find(params[:id]).user
   end
 
   # POST /report_comments or /report_comments.json
@@ -26,7 +31,7 @@ class ReportCommentsController < ApplicationController
 
     respond_to do |format|
       if @report_comment.save
-        format.html { redirect_to report_comment_url(@report_comment), notice: t('controllers.common.notice_create', name: ReportComment.model_name.human) }
+        format.html { redirect_to @report_comment.report, notice: t('controllers.common.notice_create', name: ReportComment.model_name.human) }
         format.json { render :show, status: :created, location: @report_comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,9 +42,12 @@ class ReportCommentsController < ApplicationController
 
   # PATCH/PUT /report_comments/1 or /report_comments/1.json
   def update
+    comment = ReportComment.find(params[:id])
+    report = comment.report
+
     respond_to do |format|
       if @report_comment.update(report_comment_params)
-        format.html { redirect_to report_comment_url(@report_comment), notice: t('controllers.common.notice_update', name: ReportComment.model_name.human) }
+        format.html { redirect_to report, notice: t('controllers.common.notice_update', name: ReportComment.model_name.human) }
         format.json { render :show, status: :ok, location: @report_comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,10 +58,12 @@ class ReportCommentsController < ApplicationController
 
   # DELETE /report_comments/1 or /report_comments/1.json
   def destroy
+    comment = ReportComment.find(params[:id])
+    report = comment.report
     @report_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to report_comments_url, notice: t('controllers.common.notice_destroy', name: ReportComment.model_name.human) }
+      format.html { redirect_to report, notice: t('controllers.common.notice_destroy', name: ReportComment.model_name.human) }
       format.json { head :no_content }
     end
   end

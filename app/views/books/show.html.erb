@@ -3,16 +3,6 @@
 <div class="show-item">
   <%= render @book %>
 </div>
-
-<div id="book_comments">
-  <% @book.book_comment.each do |book_comment| %>
-    <%= render book_comment %>
-    <p>
-      <%= link_to t('views.common.show', name: BookComment.model_name.human.downcase), book_comment %>
-    </p>
-  <% end %>
-</div>
-
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
@@ -20,3 +10,10 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<div id="book_comments">
+  <% @book.book_comment.each do |book_comment| %>
+    <%= render book_comment %>
+  <% end %>
+</div>
+
