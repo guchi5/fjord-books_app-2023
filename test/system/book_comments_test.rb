@@ -1,45 +1,47 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class BookCommentsTest < ApplicationSystemTestCase
   setup do
     @book_comment = book_comments(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit book_comments_url
-    assert_selector "h1", text: "Book comments"
+    assert_selector 'h1', text: 'Book comments'
   end
 
-  test "should create book comment" do
+  test 'should create book comment' do
     visit book_comments_url
-    click_on "New book comment"
+    click_on 'New book comment'
 
-    fill_in "Book", with: @book_comment.book_id
-    fill_in "Content", with: @book_comment.content
-    fill_in "User", with: @book_comment.user_id
-    click_on "Create Book comment"
+    fill_in 'Book', with: @book_comment.book_id
+    fill_in 'Content', with: @book_comment.content
+    fill_in 'User', with: @book_comment.user_id
+    click_on 'Create Book comment'
 
-    assert_text "Book comment was successfully created"
-    click_on "Back"
+    assert_text 'Book comment was successfully created'
+    click_on 'Back'
   end
 
-  test "should update Book comment" do
+  test 'should update Book comment' do
     visit book_comment_url(@book_comment)
-    click_on "Edit this book comment", match: :first
+    click_on 'Edit this book comment', match: :first
 
-    fill_in "Book", with: @book_comment.book_id
-    fill_in "Content", with: @book_comment.content
-    fill_in "User", with: @book_comment.user_id
-    click_on "Update Book comment"
+    fill_in 'Book', with: @book_comment.book_id
+    fill_in 'Content', with: @book_comment.content
+    fill_in 'User', with: @book_comment.user_id
+    click_on 'Update Book comment'
 
-    assert_text "Book comment was successfully updated"
-    click_on "Back"
+    assert_text 'Book comment was successfully updated'
+    click_on 'Back'
   end
 
-  test "should destroy Book comment" do
+  test 'should destroy Book comment' do
     visit book_comment_url(@book_comment)
-    click_on "Destroy this book comment", match: :first
+    click_on 'Destroy this book comment', match: :first
 
-    assert_text "Book comment was successfully destroyed"
+    assert_text 'Book comment was successfully destroyed'
   end
 end
