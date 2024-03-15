@@ -1,6 +1,10 @@
 <div id="<%= dom_id book_comment %>" class="comment-box">
   <div class="comment-box-header">  
     <h2>
+      <% if book_comment.user.name.empty? %>
+        <%= link_to book_comment.user.email, book_comment.user %>
+      <% end %>
+
       <%= link_to book_comment.user.name, book_comment.user %>
     </h2>
     <time><%= book_comment.created_at.strftime(t('time.formats.long')) %></time>

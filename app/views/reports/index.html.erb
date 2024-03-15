@@ -9,6 +9,9 @@
           </div>
           <div class="report_meta">
             <div class="user_name">
+              <% if report.user.name.empty? %>
+                <%= link_to report.user.email, report.user %>
+              <% end %>
               <%= link_to report.user.name, report.user %>
             </div>
             <div>
