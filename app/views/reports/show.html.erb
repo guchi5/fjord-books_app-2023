@@ -10,9 +10,9 @@
   <% end %>
 </div>
 
-<%= link_to t('views.common.new', name: ReportComment.model_name.human.downcase), new_report_comment_path(report_id:@report.id) %>
-
 <div id="report_comments">
+  <h2><%= BookComment.model_name.human %></h2>
+  <%= link_to t('views.common.new', name: ReportComment.model_name.human.downcase), new_report_comment_path(report_id:@report.id) %>
   <% @report.report_comment.each do |report_comment| %>
     <%= render report_comment %>
   <% end %>
